@@ -3,6 +3,8 @@ services:
   web:
     image: ghcr.io/hoarder-app/hoarder:${HOARDER_VERSION:-release}
     restart: unless-stopped
+    dns:
+      - 1.1.1.1
     volumes:
       # By default, the data is stored in a docker volume called "data".
       # If you want to mount a custom directory, change the volume mapping to:
@@ -23,6 +25,8 @@ services:
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
     restart: unless-stopped
+    dns:
+      - 1.1.1.1
     command:
       - --no-sandbox
       - --disable-gpu
